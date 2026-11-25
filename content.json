@@ -1,0 +1,62 @@
+{
+  "title": "CONNEXION modelling dashboard",
+  "intro": "Modelling Water-Energy-Food-Health (WEF-Health) nexus in the Inkomati catchment.",
+  "reference_title": "WEF-Health system baseline: two SSP pathways",
+  "reference_caption": "Paired exploratory SSP1-2.6 and SSP5-8.5 outputs from the v9.11 Python SDM, 2020–2049, with IMAGE crop-area inputs and separate stochastic ranges.",
+  "policy_title": "Policy pathways under two SSPs",
+  "policy_caption": "Existing WEFH policy packages rerun in the v9.11 Python SDM under SSP1-2.6 and SSP5-8.5 with IMAGE crop-area inputs.",
+  "crocodile_title": "Crocodile catchment case",
+  "crocodile_caption": "Based on outputs from the extended WRSM-2000 WEF model",
+  "scenario_labels": {
+    "centralised_development": "Centralised development",
+    "local_resilience": "Local resilience",
+    "resource_efficiency": "Resource efficiency"
+  },
+  "scenario_descriptions": {
+    "centralised_development": "WP3 + FP1 + EP1: centralised water infrastructure, commercial crop transformation and diversified energy supply.",
+    "local_resilience": "WP2 + FP2 + FP3: local storage, increased retention of food for local consumption and expanded subsistence farming.",
+    "resource_efficiency": "WP1 + EP2: lower agricultural water demand and energy consumption."
+  },
+  "partners": [
+    [
+      "IUCMA.png",
+      "Inkomati-Usuthu Catchment Management Agency"
+    ],
+    [
+      "MDoH.png",
+      "Mpumalanga Department of Health"
+    ],
+    [
+      "award.png",
+      "Association for Water and Rural Development"
+    ],
+    [
+      "UKZN.png",
+      "University of KwaZulu-Natal"
+    ],
+    [
+      "UniVen.png",
+      "University of Venda"
+    ],
+    [
+      "CSIR new logo1_0.jpg",
+      "CSIR"
+    ],
+    [
+      "NICD.png",
+      "National Institute for Communicable Diseases"
+    ],
+    [
+      "IHE.png",
+      "IHE Delft Institute for Water Education"
+    ],
+    [
+      "EMC.png",
+      "Erasmus MC"
+    ],
+    [
+      "Deltares.png",
+      "Deltares"
+    ]
+  ]
+}

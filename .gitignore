@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+.streamlit/secrets.toml
+*.isdb
+*.stmx
+*.xlsx
+*.shp
+*.shx
+*.dbf
+*.lnk
+sources.json
+refresh_data.py

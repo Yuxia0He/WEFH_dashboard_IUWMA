@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.git/
+.gitignore
+sources.json
+refresh_data.py
+*.isdb
+*.stmx
+*.xlsx
+*.shp
+*.shx
+*.dbf
+*.lnk

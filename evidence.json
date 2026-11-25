@@ -1,0 +1,111 @@
+{
+  "16": {
+    "sources": [
+      {
+        "label": "IUCMA groundwater accounting (2023)",
+        "url": "https://iucma.co.za/wp-content/uploads/2023/05/Groundwater-Accounting-for-Inkomati-Usuthu-WMA-2023.pdf"
+      }
+    ],
+    "definition": "",
+    "known": ""
+  },
+  "120": {
+    "sources": [
+      {
+        "label": "IUCMA groundwater accounting (2023)",
+        "url": "https://iucma.co.za/wp-content/uploads/2023/05/Groundwater-Accounting-for-Inkomati-Usuthu-WMA-2023.pdf"
+      }
+    ],
+    "definition": "",
+    "known": ""
+  },
+  "183": {
+    "sources": [
+      {
+        "label": "IUCMA groundwater accounting (2023)",
+        "url": "https://iucma.co.za/wp-content/uploads/2023/05/Groundwater-Accounting-for-Inkomati-Usuthu-WMA-2023.pdf"
+      },
+      {
+        "label": "Magidi et al. (2021)",
+        "url": "https://www.mdpi.com/2073-4441/13/24/3627"
+      }
+    ],
+    "definition": "",
+    "known": ""
+  },
+  "208": {
+    "sources": [
+      {
+        "label": "CONNEXION evidence brief (2026), water-data inventory"
+      }
+    ],
+    "definition": "",
+    "known": ""
+  },
+  "68": {
+    "sources": [
+      {
+        "label": "CONNEXXION_database.xlsx, Hydropower Generation"
+      }
+    ],
+    "definition": "",
+    "known": ""
+  },
+  "434": {
+    "sources": [
+      {
+        "label": "Magidi et al. (2021)",
+        "url": "https://www.mdpi.com/2073-4441/13/24/3627"
+      }
+    ],
+    "definition": "",
+    "known": ""
+  },
+  "87": {
+    "sources": [
+      {
+        "label": "Rusere et al. (2024)",
+        "url": "https://wiredspace.wits.ac.za/items/d0ef036f-36cc-482f-b373-81648dccf866"
+      }
+    ],
+    "definition": "",
+    "known": ""
+  },
+  "464": {
+    "sources": [
+      {
+        "label": "Stats SA GHS 2023",
+        "url": "https://www.statssa.gov.za/publications/P0318/P03182023.pdf"
+      },
+      {
+        "label": "Rusere et al. (2024)",
+        "url": "https://wiredspace.wits.ac.za/items/d0ef036f-36cc-482f-b373-81648dccf866"
+      }
+    ],
+    "definition": "",
+    "known": ""
+  },
+  "540": {
+    "sources": [
+      {
+        "label": "Ngomane & de Jager (2012)",
+        "url": "https://doi.org/10.1186/1475-2875-11-19"
+      }
+    ],
+    "definition": "",
+    "known": ""
+  },
+  "621": {
+    "sources": [
+      {
+        "label": "Stats SA / NDoH DHS 2016",
+        "url": "https://www.statssa.gov.za/?PPN=Report+03-00-09&SCH=7015&page_id=1854"
+      },
+      {
+        "label": "CONNEXION Health Data Overview.xlsx"
+      }
+    ],
+    "definition": "",
+    "known": ""
+  }
+}
