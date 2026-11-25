@@ -229,15 +229,22 @@ def snapshot_heatmap(rows: list[dict], columns: list[str], title: str) -> go.Fig
     return fig
 
 
+def period_mean(series: list[float], start: int, end: int) -> float:
+    values = series[start - 2020:end - 2019]
+    return sum(values) / len(values)
+
+
 def baseline_change_rows(ensemble: dict, keys: list[str]) -> list[dict]:
     rows = []
+    periods = (("2025–2029", 2025, 2029), ("2045–2049", 2045, 2049))
     for key in keys:
         item = ensemble["indicators"][key]
         row = {"Indicator": item["label"]}
         for scenario, label in (("ssp126", "SSP1"), ("ssp585", "SSP5")):
             series = item["paths"][scenario]["reference"]["median"]
-            for year in (2030, 2049):
-                row[f"{label} {year}"] = percent(series[0], series[year - 2020])
+            baseline = period_mean(series, 2020, 2024)
+            for period, start, end in periods:
+                row[f"{label} {period}"] = percent(baseline, period_mean(series, start, end))
         rows.append(row)
     return rows
 
@@ -403,26 +410,26 @@ def reference_page(ssp_data: dict, ensemble: dict, content: dict) -> None:
                     if key == "human_prevalence_proxy":
                         st.caption("* Prevalence indicator refers to the population at risk.")
     st.caption("Line colors identify sectors; line styles identify SSP pathways. Absolute time-series axes start at zero; fraction indicators use the full 0–100% scale.")
-    st.markdown("### Change from the 2020 level")
-    st.caption("Near future: 2030 · Mid-century: 2049. Each cell is the percent change from that pathway's 2020 median. Color is capped at ±100% for readability; the printed value is uncapped. A dash means the 2020 level is zero. Water outcomes in individual years can be strongly affected by hydrological variability.")
+    st.markdown("### Change across period averages")
+    st.caption("Each cell is the percentage change from the 2020–2024 baseline average to the indicated period average. Periods shown are 2025–2029 and 2045–2049. This reduces sensitivity to individual-year variability. Color is capped at ±100% for readability; the printed value is uncapped.")
     domains = sorted({ssp_data["indicators"][key]["domain"] for key in reference_order})
     selected_domains = st.multiselect("Sectors", domains, default=domains, key="baseline_change_domains")
     change_keys = [key for key in reference_order if ssp_data["indicators"][key]["domain"] in selected_domains]
     if change_keys:
         st.plotly_chart(snapshot_heatmap(baseline_change_rows(ensemble, change_keys),
-                        ["SSP1 2030", "SSP5 2030", "SSP1 2049", "SSP5 2049"],
-                        "Percent change from 2020"), width="stretch", config={"displaylogo": False})
+                        ["SSP1 2025–2029", "SSP5 2025–2029", "SSP1 2045–2049", "SSP5 2045–2049"],
+                        "Percent change from 2020–2024 average"), width="stretch", config={"displaylogo": False})
         zero_rows = []
         for key in change_keys:
             item = ensemble["indicators"][key]
             paths = item["paths"]
-            if any(abs(paths[scenario]["reference"]["median"][0]) < 1e-9
+            if any(abs(period_mean(paths[scenario]["reference"]["median"], 2020, 2024)) < 1e-9
                    for scenario in ("ssp126", "ssp585")):
                 row = {"Indicator": item["label"], "Unit": axis_unit(item)}
                 for scenario, label in (("ssp126", "SSP1"), ("ssp585", "SSP5")):
                     series = scaled(item, paths[scenario]["reference"]["median"])
-                    row.update({f"{label} {year}": fmt(series[year - 2020])
-                                for year in (2020, 2030, 2049)})
+                    row.update({f"{label} {period}": fmt(period_mean(series, start, end))
+                                for period, start, end in (("2020–2024", 2020, 2024), ("2025–2029", 2025, 2029), ("2045–2049", 2045, 2049))})
                 zero_rows.append(row)
         if zero_rows:
             st.caption("Absolute levels for indicators whose 2020 value is zero")
