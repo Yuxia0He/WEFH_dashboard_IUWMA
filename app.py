@@ -434,22 +434,6 @@ def reference_page(ssp_data: dict, ensemble: dict, content: dict) -> None:
         if zero_rows:
             st.caption("Absolute levels for indicators whose 2020 value is zero")
             st.dataframe(pd.DataFrame(zero_rows), hide_index=True, width="stretch")
-    st.markdown("### Pathway summary")
-    rows = []
-    for key in reference_order:
-        item = ssp_data["indicators"][key]
-        paths = ensemble["indicators"][key]["paths"]
-        a1, b1 = paths["ssp126"]["reference"]["median"][0], paths["ssp126"]["reference"]["median"][-1]
-        a5, b5 = paths["ssp585"]["reference"]["median"][0], paths["ssp585"]["reference"]["median"][-1]
-        if item["kind"] == "fraction":
-            a1, b1, a5, b5 = (value * 100 for value in (a1, b1, a5, b5))
-            gap = f"{b5-b1:+.2f} pp"
-        else:
-            gap = fmt(b5-b1)
-        rows.append({"Domain": item["domain"], "Indicator": item["label"], "Unit": axis_unit(item),
-                     "SSP1 2020": fmt(a1), "SSP1 2049": fmt(b1),
-                     "SSP5 2020": fmt(a5), "SSP5 2049": fmt(b5), "2049 SSP5−SSP1": gap})
-    st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch")
     st.caption("The model provides complete annual results through 2049. Values are summed, averaged or taken in December according to the indicator definition. The health outputs are provisional model indicators, not calibrated disease forecasts.")
 
 
