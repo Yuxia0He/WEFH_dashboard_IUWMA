@@ -364,7 +364,7 @@ def overview(data: dict, content: dict) -> None:
     st.markdown(content["intro"])
     st.markdown("### Explore the model outputs")
     cards = [
-        ("WEFH system baseline", "Reference trajectories for the water, energy, food and health sectors under the most and least sustainable SSP–RCP pathways (SSP–RCP 1–1.6 and 5–8.5), simulated with the basin-scale system dynamics model for 2020–2050."),
+        ("WEFH system baseline", "Reference trajectories for the water, energy, food and health sectors under two contrasting socio-climatic pathways (SSP–RCP 1–1.6 and 5–8.5), simulated with the basin-scale system dynamics model for 2020–2050."),
         ("Policy comparison", "WEFH policy scenarios simulated under both SSP–RCP pathways and compared with the corresponding business-as-usual reference scenario."),
         ("Crocodile catchment case study", "Meso-scale WEF nexus assessment using the extended WRSM2000-WEF model, linking catchment hydrology with water, agricultural production, energy and health indicators across management cases."),
     ]
