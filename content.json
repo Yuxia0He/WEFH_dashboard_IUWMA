@@ -1,8 +1,8 @@
 {
   "title": "CONNEXION modelling dashboard",
   "intro": "Modelling Water-Energy-Food-Health (WEF-Health) nexus in the Inkomati catchment.",
-  "reference_title": "WEF-Health system baseline: two SSP pathways",
-  "reference_caption": "Paired exploratory SSP1-2.6 and SSP5-8.5 outputs from the v9.11 Python SDM, 2020–2049, with IMAGE crop-area inputs and separate stochastic ranges.",
+  "reference_title": "WEFH-Health system baseline",
+  "reference_caption": "Exploratory SSP1-2.6 and SSP5-8.5 model simulation outputs from IUWMA WEFH SDM, 2020–2049.",
   "policy_title": "Policy pathways under two SSPs",
   "policy_caption": "Existing WEFH policy packages rerun in the v9.11 Python SDM under SSP1-2.6 and SSP5-8.5 with IMAGE crop-area inputs.",
   "crocodile_title": "Crocodile catchment case",

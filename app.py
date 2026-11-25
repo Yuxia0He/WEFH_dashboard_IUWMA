@@ -17,12 +17,8 @@ HERE = Path(__file__).resolve().parent
 YEARS = [2020, 2030, 2040, 2049]
 REFERENCE_ORDER = ["16", "120", "183", "208", "68", "434", "87", "464", "540", "621"]
 REFERENCE_DISPLAY_ORDER = [
-    "population",
     "water_resources", "agriculture_water_demand", "total_allocation_deficit", "agricultural_water_deficit",
     "dam_storage", "local_storage", "irrigated_crop_production", "rainfed_crop_production",
-    "irrigated_maize_area", "rainfed_maize_area", "irrigated_soy_area", "rainfed_soy_area",
-    "irrigated_sugarcane_area",
-    "irrigated_maize_production", "rainfed_maize_production", "irrigated_soy_production", "rainfed_soy_production",
     "total_crop_market_value",
     "local_crop_food_energy", "food_energy_adequacy", "food_insecurity_fraction",
     "energy_supply", "energy_consumption", "total_malaria_incidence",
@@ -393,9 +389,7 @@ def reference_page(ssp_data: dict, ensemble: dict, content: dict) -> None:
         '</div>',
         unsafe_allow_html=True,
     )
-    st.info("Exploratory v9.11 Python runs share a 2015–2019 history and branch in January 2020. Crop areas follow IMAGE ISIMIP3b change, anchored to MAPSPAM 2020 for maize and soybean and to a provisional 42,500 ha regional sugarcane estimate. Blue and red ribbons show each pathway's 10th–90th percentile across 24 model stochastic runs. They exclude climate, crop-area, parameter and structural uncertainty.")
-    show_previous = st.toggle("Overlay previous SDM crop-area inputs and outputs", value=False,
-                              help="Black dotted lines show the preceding v9.11 model under the same climate, population and yield forcings.")
+    st.info("Blue and red ribbons show each pathway's 10th–90th percentile across 100 repeated model stochastic runs. They exclude climate, crop-area, parameter and structural uncertainty.")
     st.markdown("### System patterns, 2020–2049")
     reference_order = [key for key in REFERENCE_DISPLAY_ORDER if key in ssp_data["indicators"]]
     for start in range(0, len(reference_order), 2):
@@ -405,7 +399,7 @@ def reference_page(ssp_data: dict, ensemble: dict, content: dict) -> None:
             with col:
                 with st.container(border=True):
                     heading(item["domain"], item["label"], f'{method_name(item["annual_method"])} · {axis_unit(item)}')
-                    st.plotly_chart(reference_chart(item, ensemble["indicators"][key], show_previous), width="stretch", config={"displaylogo": False})
+                    st.plotly_chart(reference_chart(item, ensemble["indicators"][key], False), width="stretch", config={"displaylogo": False})
     st.caption("Line colors identify sectors; line styles identify SSP pathways. Absolute time-series axes start at zero; fraction indicators use the full 0–100% scale.")
     st.markdown("### Change from the 2020 level")
     st.caption("Near future: 2030 · Mid-century: 2049. Each cell is the percent change from that pathway's 2020 median. Color is capped at ±100% for readability; the printed value is uncapped. A dash means the 2020 level is zero. Water outcomes in individual years can be strongly affected by hydrological variability.")
@@ -447,28 +441,6 @@ def reference_page(ssp_data: dict, ensemble: dict, content: dict) -> None:
                      "SSP1 2020": fmt(a1), "SSP1 2049": fmt(b1),
                      "SSP5 2020": fmt(a5), "SSP5 2049": fmt(b5), "2049 SSP5−SSP1": gap})
     st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch")
-    st.markdown("### Effect of the crop-area update in 2049")
-    comparison_keys = ["irrigated_sugarcane_area", "irrigated_maize_area", "irrigated_soy_area",
-                       "rainfed_maize_area", "rainfed_soy_area", "agriculture_water_demand",
-                       "agricultural_water_deficit", "irrigated_crop_production", "rainfed_crop_production",
-                       "food_energy_adequacy", "total_crop_market_value", "undernutrition_under_5"]
-    effect_rows = []
-    for key in comparison_keys:
-        item = ssp_data["indicators"][key]
-        row = {"Indicator": item["label"], "Unit": axis_unit(item)}
-        for scenario, label in (("ssp126", "SSP1"), ("ssp585", "SSP5")):
-            before = item["annual"]["prior_" + scenario][-1]
-            after = item["annual"][scenario][-1]
-            if item["kind"] == "fraction":
-                before, after = before * 100, after * 100
-                change = f"{after - before:+.2f} pp"
-            else:
-                change = percentage_label(percent(before, after))
-            row[f"{label} before"] = fmt(before)
-            row[f"{label} after"] = fmt(after)
-            row[f"{label} change"] = change
-        effect_rows.append(row)
-    st.dataframe(pd.DataFrame(effect_rows), hide_index=True, width="stretch")
     st.caption("The model provides complete annual results through 2049. Values are summed, averaged or taken in December according to the indicator definition. The health outputs are provisional model indicators, not calibrated disease forecasts.")
 
 
