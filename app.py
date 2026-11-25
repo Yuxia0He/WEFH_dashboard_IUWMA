@@ -362,9 +362,9 @@ def evidence_note(note: dict) -> None:
 def overview(data: dict, content: dict) -> None:
     st.title("Project overview")
     st.markdown(content["intro"])
-    st.markdown("### Explore the evidence")
+    st.markdown("### Explore the model outputs")
     cards = [
-        ("WEFH system baseline", "Paired SSP1-2.6 and SSP5-8.5 trajectories, stochastic ranges and changes from 2020."),
+        ("WEFH system baseline", "Reference trajectories for the water, energy, food and health sectors under the most and least sustainable SSP–RCP pathways, simulated with the basin-scale system dynamics model for 2020–2050."),
         ("Policy comparison", "Three policy packages under both SSPs, compared with their own no-policy pathways."),
         ("Crocodile catchment case", "Outputs from the extended WRSM2000-WEF model."),
     ]
