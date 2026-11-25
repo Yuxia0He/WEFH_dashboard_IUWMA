@@ -400,6 +400,8 @@ def reference_page(ssp_data: dict, ensemble: dict, content: dict) -> None:
                 with st.container(border=True):
                     heading(item["domain"], item["label"], f'{method_name(item["annual_method"])} · {axis_unit(item)}')
                     st.plotly_chart(reference_chart(item, ensemble["indicators"][key], False), width="stretch", config={"displaylogo": False})
+                    if key == "human_prevalence_proxy":
+                        st.caption("Remark: this prevalence indicator refers to the population at risk.")
     st.caption("Line colors identify sectors; line styles identify SSP pathways. Absolute time-series axes start at zero; fraction indicators use the full 0–100% scale.")
     st.markdown("### Change from the 2020 level")
     st.caption("Near future: 2030 · Mid-century: 2049. Each cell is the percent change from that pathway's 2020 median. Color is capped at ±100% for readability; the printed value is uncapped. A dash means the 2020 level is zero. Water outcomes in individual years can be strongly affected by hydrological variability.")
