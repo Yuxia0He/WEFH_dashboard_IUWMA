@@ -365,6 +365,7 @@ def evidence_note(note: dict) -> None:
 def overview(data: dict, content: dict) -> None:
     st.title("Project overview")
     st.markdown(content["intro"])
+    st.warning("Preliminary demonstration version for internal circulation. The dashboard and model outputs are still under development and are not yet final.")
     st.markdown("### Explore the model outputs")
     cards = [
         ("WEFH system baseline", "Reference trajectories for the water, energy, food and health sectors under the SSP1 sustainability and SSP5 fossil-fuelled development pathways (SSP1–2.6 and SSP5–8.5), simulated with the basin-scale system dynamics model for 2020–2050."),
